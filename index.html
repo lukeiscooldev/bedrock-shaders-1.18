@@ -2,6 +2,26 @@
 <html>
   <head>
     <style>
+      header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(135deg, #000000, #1a1a1a);
+  padding: 15px 0;
+  border-bottom: 2px solid #00ff00;
+  box-shadow: 0 0 15px #00ff00;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+header h1 {
+  margin: 0;
+  text-align: center;
+}
+
+body {
+  padding-top: 80px;
+}
       body {
       background: linear-gradient(135deg, #00159a, #41b6ff, #2d2d2d);
       min-height: 100vh;
@@ -64,7 +84,10 @@
     <title>Minecraft Bedrock Shaders</title>
   </head>
   <body>
-    <center><h1>Minecraft Shaders</h1></center>
+    <header class="top-bar">
+  <h1>Shaders</h1>
+    </header>
+    <center><h1>Featured</h1></center>
     <div class="card">
       <img src="./lv_0_20260425213723.jpg" alt="SEUS PE Image" loading="lazy">
       <h2>SUES PE Remake</h2>
@@ -77,5 +100,23 @@
       <p>Realism Based Shader</p>
       <button>Info</button>
     </div>
+    <script>
+  let lastScrollTop = 0;
+  const header = document.querySelector('header');
+
+  window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollTop > lastScrollTop) {
+      // Scrolling DOWN - hide header
+      header.style.transform = 'translateY(-100%)';
+    } else {
+      // Scrolling UP - show header
+      header.style.transform = 'translateY(0)';
+    }
+    
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  });
+    </script>
   </body>
 </html>
