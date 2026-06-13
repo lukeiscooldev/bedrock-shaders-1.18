@@ -2,57 +2,98 @@
 <html>
   <head>
     <style>
-      header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: linear-gradient(135deg, #000000, #1a1a1a);
-  padding: 15px 0;
-  border-bottom: 2px solid #00ff00;
-  box-shadow: 0 0 15px #00ff00;
-  z-index: 1000;
-  transition: transform 0.3s ease;
-}
-
-header h1 {
-  margin: 0;
-  text-align: center;
-}
-
-body {
-  padding-top: 80px;
-}
-      body {
-      background: linear-gradient(135deg, #00159a, #41b6ff, #2d2d2d);
-      min-height: 100vh;
+      * {
+        margin: 0;
+        padding: 0;
       }
 
-      h1 {
+      body {
+        background: linear-gradient(135deg, #00159a, #41b6ff, #2d2d2d);
+        min-height: 100vh;
+        padding-top: 80px;
+        font-family: Arial, sans-serif;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: linear-gradient(135deg, #000000, #1a1a1a);
+        padding: 15px 0;
+        border-bottom: 2px solid #00ffff;
+        box-shadow: 0 0 15px #00ffff;
+        z-index: 1000;
+        transition: transform 0.3s ease;
+      }
+
+      header h1 {
         color: #ffffff;
         font-family: serif;
-        text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+        text-shadow: 0 0 10px #ffffff, 0 0 20px #00ffff;
+        margin: 0;
+        text-align: center;
       }
-      
-      .card {
-        background: hsla(222.3,100%,29.1%,0.161);
+
+      .page-title {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .page-title h1 {
+        color: #ffffff;
+        font-family: serif;
+        font-size: 2.5em;
+        text-shadow: 0 0 10px #ffffff, 0 0 20px #00ffff;
+        margin: 20px 0;
+      }
+
+      .featured-section {
+        text-align: center;
+        margin: 40px 0 20px 0;
+      }
+
+      .featured-section h2 {
+        color: #ffffff;
+        font-size: 1.8em;
+        text-shadow: 0 0 10px #ffffff;
+        margin-bottom: 30px;
+      }
+
+      .cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
         padding: 20px;
-        border-radius: 10px;
+      }
+
+      .card {
+        background: rgba(0, 21, 154, 0.2);
+        padding: 20px;
+        border-radius: 15px;
         border: 3px solid #00ffff;
-        box-shadow: 0 0 15px #00FFFF, 0 0 30px rgba(255, 0, 110, 0.5);
+        box-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.3);
         max-width: 300px;
-        margin: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 25px #00ffff, 0 0 50px rgba(0, 255, 255, 0.5);
       }
 
       .card h2 {
         color: #00ffff;
         margin-bottom: 10px;
         text-shadow: 0 0 5px #00ffff;
+        font-size: 1.3em;
       }
 
       .card p {
         color: #ffffff;
         margin-bottom: 15px;
         text-shadow: 0 0 3px #ffffff;
+        font-size: 0.95em;
       }
 
       .card button {
@@ -60,63 +101,72 @@ body {
         padding: 10px;
         background: #00ffff;
         color: #000000;
-        border: 2px solid #00;
+        border: 2px solid #00ffff;
         border-radius: 5px;
         cursor: pointer;
         font-weight: bold;
         box-shadow: 0 0 10px #00ffff;
+        transition: all 0.3s ease;
       }
 
       .card button:hover {
         background: #00ff00;
+        border-color: #00ff00;
         color: #000000;
         box-shadow: 0 0 20px #00ff00;
       }
 
       img {
-       width: 260px;
-       height: 200px;
-       object-fit: cover;
-       border-radius: 10px;
-       border: 2px solid #00ffff;
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 2px solid #00ffff;
+        margin-bottom: 15px;
       }
     </style>
     <title>Minecraft Bedrock Shaders</title>
   </head>
   <body>
-    <header class="top-bar">
-  <h1>Shaders</h1>
+    <header>
+      <h1>Minecraft Shaders</h1>
     </header>
-    <center><h1>Featured</h1></center>
-    <div class="card">
-      <img src="./lv_0_20260425213723.jpg" alt="SEUS PE Image" loading="lazy">
-      <h2>SUES PE Remake</h2>
-      <p>A Realism Shader inspired by different shaders!</p>
-      <button>Info</button>
-    </div>
-    <div class="card">
-      <img src="./Images/lv_0_20260425213702.jpg" alt="Yamarin's Legacy">
-      <h2>Yamarin's Legacy</h2>
-      <p>Realism Based Shader</p>
-      <button>Info</button>
-    </div>
-    <script>
-  let lastScrollTop = 0;
-  const header = document.querySelector('header');
 
-  window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (scrollTop > lastScrollTop) {
-      // Scrolling DOWN - hide header
-      header.style.transform = 'translateY(-100%)';
-    } else {
-      // Scrolling UP - show header
-      header.style.transform = 'translateY(0)';
-    }
-    
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-  });
+    <div class="featured-section">
+      <h2>Featured</h2>
+    </div>
+
+    <div class="cards-container">
+      <div class="card">
+        <img src="./lv_0_20260425213723.jpg" alt="SEUS PE Image" loading="lazy">
+        <h2>SUES PE Remake</h2>
+        <p>A Realism Shader inspired by different shaders!</p>
+        <button>Info</button>
+      </div>
+
+      <div class="card">
+        <img src="./Images/lv_0_20260425213702.jpg" alt="Yamarin's Legacy">
+        <h2>Yamarin's Legacy</h2>
+        <p>Realism Based Shader</p>
+        <button>Info</button>
+      </div>
+    </div>
+
+    <script>
+      let lastScrollTop = 0;
+      const header = document.querySelector('header');
+
+      window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop) {
+          header.style.transform = 'translateY(-100%)';
+        } else {
+          header.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+      });
     </script>
   </body>
 </html>
